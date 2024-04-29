@@ -81,4 +81,4 @@ Example from [jonomango/hv](https://github.com/jonomango/hv/blob/783ad9d99396546
  # Testing
  Confirmed to be working on AMD (Ryzen 5 3600X 6-Core Processor) by me (TDC0471)
  
- Confirmed to be working on Intel soon...
+ Confirmed to be working on Intel (i5-8365U @ 1.60GHz) by me (TDC0471), Thanks to akouma STL for attempting to test it with me
