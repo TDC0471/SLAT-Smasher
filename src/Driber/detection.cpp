@@ -50,7 +50,7 @@ RESULT check_memory(uint64_t physical_address) {
 	}
 
 	_disable(); //to prevent context switching
-	__writecr3(our_cr3.value);
+	__writecr3(our_cr3.value); //serializing instruction
 
 
 	//read at physical_address to cache it in the TLB
@@ -58,7 +58,9 @@ RESULT check_memory(uint64_t physical_address) {
 
 	for (uint8_t i = 0; i < 15; i++)
 		print("[%d]: %llx\n", i, *reinterpret_cast<uint64_t*>(host_pa_base + physical_address_rva));
-
+	
+	__faststorefence();
+	
 	//set PFN to our page
 	pdpte.huge.page_pa = pool_pa >> 30;
 
