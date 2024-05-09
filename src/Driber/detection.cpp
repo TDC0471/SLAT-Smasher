@@ -64,6 +64,8 @@ RESULT check_memory(uint64_t physical_address) {
 	//set PFN to our page
 	pdpte.huge.page_pa = pool_pa >> 30;
 
+	__faststorefence();
+	
 	//read to check for TAGs presence 
 	uint64_t read = *reinterpret_cast<uint64_t*>(host_pa_base + pool_rva);
 	print("READ: %llx\n", read);
